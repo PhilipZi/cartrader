@@ -12,6 +12,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const route = useRoute();
 
-<style lang="scss" scoped></style>
+useHead({
+  title: `${toTitleCase(route.params.name)} | Car Detail Page`,
+  meta: [
+    {
+      name: "description",
+      content: "Car Detail Page",
+    },
+  ],
+});
+
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+</script>
