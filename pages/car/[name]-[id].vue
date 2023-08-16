@@ -1,14 +1,15 @@
 <template>
-  <div>
-    <CarDetailHero />
-    <CarAttributes />
-    <CarDescription />
+  <div v-if="car">
+    <CarDetailHero :car="car" />
+    <CarAttributes :features="car.features" />
+    <CarDescription :description="car.description" />
     <CarContact />
   </div>
 </template>
 
 <script setup>
 const route = useRoute();
+const { cars } = useCars();
 const { toTitleCase } = useUtilities();
 
 useHead({
@@ -19,6 +20,10 @@ useHead({
       content: "Car Detail Page",
     },
   ],
+});
+
+const car = computed(() => {
+  return cars.find((c) => c.id === parseInt(route.params.id));
 });
 
 definePageMeta({
