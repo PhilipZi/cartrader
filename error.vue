@@ -12,8 +12,6 @@
 </template>
 
 <script setup>
-import { clear } from "console";
-
 const error = useError();
 
 const handleGoBack = () => {
