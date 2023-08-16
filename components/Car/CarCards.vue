@@ -1,9 +1,9 @@
 <template>
   <div class="w-full">
-    <CarCard />
+    <CarCard v-for="car in cars" :key="car.id" :car="car" />
   </div>
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+const { cars } = useCars();
+</script>
